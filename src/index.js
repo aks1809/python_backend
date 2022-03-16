@@ -14,7 +14,7 @@ const httpServer = createServer(app);
 middlewaresConfig(app);
 
 app.get('/images', (req, res) => {
-  const filepath = `/home/poop/frinks/skh/python_backend/images/${req.query.params}`;
+  const filepath = `/python_backend/images/${req.query.params}`;
   return res.sendFile(filepath);
 });
 
@@ -23,7 +23,7 @@ app.get('/upload', async (req, res) => {
   const imageData = await axios.get(`${constants.CAMERA_BACKEND_BASE_PATH}/capture`);
   const base64Data = imageData.data.replace(/^data:image\/png;base64,/, '');
   fs.writeFile(
-    '/home/poop/frinks/skh/python_backend/images/upload.bmp',
+    '/python_backend/images/upload.bmp',
     base64Data,
     'base64',
     err => {
