@@ -20,7 +20,7 @@ app.get('/images', (req, res) => {
 
 app.get('/upload', async (req, res) => {
   // execute query on camera_backend
-  const imageData = await axios.get(`${constants.CAMERA_BACKEND_BASE_PATH}:9001/capture`);
+  const imageData = await axios.get('http://172.31.0.214:9001/capture');
   const base64Data = imageData.data.replace(/^data:image\/png;base64,/, '');
   fs.writeFile('/python_backend/images/upload.bmp', base64Data, 'base64', err => {
     if (err) {
