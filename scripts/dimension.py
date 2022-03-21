@@ -156,7 +156,7 @@ def main():
 
     # reading parameter json file
     data_jsonx = json.load(
-        open("/home/poop/frinks/skh/python_backend/scripts/dimension_data.json",))
+        open("/python_backend/scripts/dimension_data.json",))
     data_jsonx = data_jsonx[0]
 
     # print(type(data_jsonx["c1x1"]))

@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
+import constants from './constants';
 
-const allowedDomains = ['http://172.31.0.214:3000'];
+const allowedDomains = [`${constants.CAMERA_FRONTEND}`];
 
 export default app => {
   app.use(express.json());
