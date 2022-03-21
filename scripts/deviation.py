@@ -42,7 +42,7 @@ def letter_cmp2(a, b):
 letter_cmp_key2 = cmp_to_key(letter_cmp2)
 
 
-def func(img2, template, template_name):
+def func(img2, template, template_name, cus_th=data_jsonx["threshold"]):
     result = cv2.matchTemplate(img2, template, cv2.TM_CCOEFF_NORMED)
     (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(result)
     (startX, startY) = maxLoc
@@ -73,7 +73,8 @@ def func(img2, template, template_name):
     # plt.show()
     # cv2.imwrite("template_matching_image_with_key.jpg",img3)
     # ------------------------------< IMPORANT PARAMETER
-    threshold = data_jsonx["threshold"]
+    # threshold = data_jsonx["threshold"]
+    threshold = cus_th
     (yCoords, xCoords) = np.where(result >= threshold)
     img3 = img2.copy()
     #print("[INFO] {} matched locations *before* NMS".format(len(yCoords)))
@@ -151,16 +152,34 @@ img3 = img2.copy()
 j = 1
 # --------------------> IMPORTANT PARAMETER
 rectangle_size = data_jsonx["rect_size"]
+
+
 for i in data['shapes']:
     # print(i)
     part_name = i['label']
+    # print(f"part_name: {part_name}")
     coords = i['points']
     l = i['points']
     crop_img = img1[int(l[0][1]):int(l[1][1])+1, int(l[0][0]):int(l[1][0])+1]
     # plt.imshow(crop_img)
     # plt.show()
+
+    custom_th = data_jsonx["threshold"]
+    # if part_name == "Rivet Top 4":
+    #     custom_th = 0.83
+    # elif part_name == "Rivet Bottom 2":
+    #     custom_th = 0.55
+
+    if "Rivet Top" in part_name:
+        custom_th = 0.83
+    elif "Rivet Bottom" in part_name:
+        custom_th = 0.41  # 0.45
+    elif "Torsional Spring" in part_name:
+        custom_th = 0.39
+        rectangle_size = 28
+
     b = func(img2[int(l[0][1]-rectangle_size):int(l[1][1]+rectangle_size)+1, int(l[0]
-             [0]-rectangle_size):int(l[1][0]+rectangle_size)+1], crop_img, "bolt "+str(j))
+             [0]-rectangle_size):int(l[1][0]+rectangle_size)+1], crop_img, "bolt "+str(j), cus_th=custom_th)
     img_flip_ud = cv2.flip(img2[int(l[0][1]-rectangle_size):int(l[1][1]+rectangle_size)+1, int(
         l[0][0]-rectangle_size):int(l[1][0]+rectangle_size)+1], 0)  # ,crop_img,"bolt "+str(j))
     #b2 = func(img_flip_ud,crop_img,"bolt "+str(j))
@@ -170,8 +189,8 @@ for i in data['shapes']:
     if len(b2)==4 and len(b)!=4:
         b = b2
     '''
-    cv2.rectangle(img3, (int(l[0][0]), int(l[0][1])),
-                  (int(l[1][0]), int(l[1][1])), (0, 255, 0), 5)
+    # cv2.rectangle(img3, (int(l[0][0]), int(l[0][1])),
+    #               (int(l[1][0]), int(l[1][1])), (0, 255, 0), 5)
     if len(b2) == 4:
         a, threshold, yes, cord = b2[0], b2[1], b2[2], b2[3]
         startX, startY, endX, endY = cord[0], cord[1], cord[2], cord[3]
@@ -1153,4 +1172,5 @@ final_outx.extend(not_finalx)
 print(json.dumps(final_outx, indent=2))
 # print(outputdata)
 # cv2.imwrite(name.split('.')[0]+'_'+'result.jpg',img3)
+
 cv2.imwrite('/python_backend/images/result.jpg', img3)
