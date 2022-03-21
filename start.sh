@@ -1,4 +1,4 @@
 #!/bin/bash
-yarn dev &
+yarn dev
 wait -n
 exit $?
