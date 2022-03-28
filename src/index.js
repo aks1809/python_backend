@@ -13,8 +13,12 @@ const httpServer = createServer(app);
 
 middlewaresConfig(app);
 
+app.get('/', (req, res) => {
+  return res.send('Home route is working');
+});
+
 app.get('/images', (req, res) => {
-  const filepath = `/python_backend/images/${req.query.params}`;
+  const filepath = `/home/poop/frinks/skh/python_backend/images/${req.query.params}`;
   return res.sendFile(filepath);
 });
 
