@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/images', (req, res) => {
-  const filepath = `/home/poop/frinks/skh/python_backend/images/${req.query.params}`;
+  const filepath = `/python_backend/images/${req.query.params}`;
   return res.sendFile(filepath);
 });
 
