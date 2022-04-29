@@ -7,6 +7,7 @@ import os
 import time
 import json
 
+BASE_PATH = "/home/user/frinks/python_backend"
 
 # --------------------- MAIN FUNCTION --------------------
 
@@ -156,7 +157,7 @@ def main():
 
     # reading parameter json file
     data_jsonx = json.load(
-        open("/home/user/frinks/python_backend/scripts/dimension_data.json",))
+        open(f"{BASE_PATH}/scripts/dimension_data.json",))
     data_jsonx = data_jsonx[0]
 
     # print(type(data_jsonx["c1x1"]))

@@ -2,11 +2,13 @@ import json
 import time
 import subprocess
 
+BASE_PATH = "/home/user/frinks/python_backend"
+
 try:
     first = subprocess.Popen(
-        ["python3 /home/user/frinks/python_backend/scripts/dimension.py /home/user/frinks/python_backend/images/upload.bmp"], stdout=subprocess.PIPE, shell=True)
+        [f"python3 {BASE_PATH}/scripts/dimension.py {BASE_PATH}/images/upload.bmp"], stdout=subprocess.PIPE, shell=True)
     second = subprocess.Popen(
-        ["python3 /home/user/frinks/python_backend/scripts/deviation.py /home/user/frinks/python_backend/images/upload.bmp"], stdout=subprocess.PIPE, shell=True)
+        [f"python3 {BASE_PATH}/scripts/deviation.py {BASE_PATH}/images/upload.bmp"], stdout=subprocess.PIPE, shell=True)
     start = time.time()
     fout, ferr = first.communicate()
     sout, serr = second.communicate()

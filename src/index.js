@@ -11,6 +11,8 @@ import constants from './config/constants';
 const app = express();
 const httpServer = createServer(app);
 
+const BASE_PATH = '/home/user/frinks/python_backend';
+
 middlewaresConfig(app);
 
 app.get('/', (req, res) => {
@@ -18,7 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/images', (req, res) => {
-  const filepath = `/home/user/frinks/python_backend/images/${req.query.params}`;
+  const filepath = `${BASE_PATH}/images/${req.query.params}`;
   return res.sendFile(filepath);
 });
 
@@ -26,7 +28,7 @@ app.get('/upload', async (req, res) => {
   // execute query on camera_backend
   const imageData = await axios.get(`${constants.CAMERA_BACKEND}/capture`);
   const base64Data = imageData.data.replace(/^data:image\/png;base64,/, '');
-  fs.writeFile('/home/user/frinks/python_backend/images/upload.bmp', base64Data, 'base64', err => {
+  fs.writeFile(`${BASE_PATH}/images/upload.bmp`, base64Data, 'base64', err => {
     if (err) {
       console.log(err);
     }
@@ -42,6 +44,7 @@ app.get('/upload', async (req, res) => {
 
 app.get('/analysis', (req, res) => {
   const pythonData = spawn('python3', [path.resolve(process.cwd(), 'scripts/main.py')]);
+  console.log(pythonData);
   pythonData.stdout.on('data', data => {
     res.status(200).json({
       success: true,
