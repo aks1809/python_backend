@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/images', (req, res) => {
-  const filepath = `/python_backend/images/${req.query.params}`;
+  const filepath = `/home/user/frinks/python_backend/images/${req.query.params}`;
   return res.sendFile(filepath);
 });
 
@@ -26,7 +26,7 @@ app.get('/upload', async (req, res) => {
   // execute query on camera_backend
   const imageData = await axios.get(`${constants.CAMERA_BACKEND}/capture`);
   const base64Data = imageData.data.replace(/^data:image\/png;base64,/, '');
-  fs.writeFile('/python_backend/images/upload.bmp', base64Data, 'base64', err => {
+  fs.writeFile('/home/user/frinks/python_backend/images/upload.bmp', base64Data, 'base64', err => {
     if (err) {
       console.log(err);
     }

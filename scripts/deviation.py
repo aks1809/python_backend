@@ -9,7 +9,7 @@ import random
 from functools import cmp_to_key
 # loading parameter jason file
 data_jsonx = json.load(
-    open("/python_backend/scripts/deviation_data.json",))[0]
+    open("/home/user/frinks/python_backend/scripts/deviation_data.json",))[0]
 
 
 def letter_cmp(a, b):
@@ -126,9 +126,9 @@ def func(img2, template, template_name, cus_th=data_jsonx["threshold"]):
 
 # main
 # sys.argv[1]
-param_1 = '/python_backend/scripts/2000.bmp'
+param_1 = '/home/user/frinks/python_backend/scripts/2000.bmp'
 # sys.argv[2]
-param_2 = '/python_backend/scripts/2000.json'
+param_2 = '/home/user/frinks/python_backend/scripts/2000.json'
 param_3 = sys.argv[1]
 img1 = cv2.imread(param_1, cv2.IMREAD_COLOR)
 f = open(param_2,)
@@ -1173,4 +1173,4 @@ print(json.dumps(final_outx, indent=2))
 # print(outputdata)
 # cv2.imwrite(name.split('.')[0]+'_'+'result.jpg',img3)
 
-cv2.imwrite('/python_backend/images/result.jpg', img3)
+cv2.imwrite('/home/user/frinks/python_backend/images/result.jpg', img3)

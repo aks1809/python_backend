@@ -4,9 +4,9 @@ import subprocess
 
 try:
     first = subprocess.Popen(
-        ["python3 /python_backend/scripts/dimension.py /python_backend/images/upload.bmp"], stdout=subprocess.PIPE, shell=True)
+        ["python3 /home/user/frinks/python_backend/scripts/dimension.py /home/user/frinks/python_backend/images/upload.bmp"], stdout=subprocess.PIPE, shell=True)
     second = subprocess.Popen(
-        ["python3 /python_backend/scripts/deviation.py /python_backend/images/upload.bmp"], stdout=subprocess.PIPE, shell=True)
+        ["python3 /home/user/frinks/python_backend/scripts/deviation.py /home/user/frinks/python_backend/images/upload.bmp"], stdout=subprocess.PIPE, shell=True)
     start = time.time()
     fout, ferr = first.communicate()
     sout, serr = second.communicate()
