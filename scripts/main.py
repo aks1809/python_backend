@@ -2,7 +2,7 @@ import json
 import time
 import subprocess
 
-BASE_PATH = "/home/user/frinks/python_backend"
+BASE_PATH = "/home/poop/frinks/skh/python_backend"
 
 try:
     first = subprocess.Popen(
