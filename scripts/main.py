@@ -2,7 +2,7 @@ import json
 import time
 import subprocess
 
-BASE_PATH = "/home/user/frinks/python_backend"
+BASE_PATH = "/python_backend"
 
 try:
     first = subprocess.Popen(
@@ -12,7 +12,7 @@ try:
     start = time.time()
     fout, ferr = first.communicate()
     sout, serr = second.communicate()
-    end = time.time()
+    print(fout, sout)
     fres = json.loads(fout.decode('ascii'))
     sres = json.loads(sout.decode('ascii'))
     flen = len(fres)
