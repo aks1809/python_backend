@@ -12,7 +12,7 @@ try:
     start = time.time()
     fout, ferr = first.communicate()
     sout, serr = second.communicate()
-    print(fout, sout)
+    end = time.time()
     fres = json.loads(fout.decode('ascii'))
     sres = json.loads(sout.decode('ascii'))
     flen = len(fres)
