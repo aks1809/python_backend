@@ -15,11 +15,13 @@ data_jsonx = json.load(open(f"{BASE_PATH}/scripts/deviation_data.json",))[0]
 
 # functon to add 50 pixels to the top of image
 
+
 def add_black(img):
-    img_h,img_w,c = img.shape
-    black = np.zeros((50+img_h,img_w,3))
-    black[50:,:,:] = img
+    img_h, img_w, c = img.shape
+    black = np.zeros((50+img_h, img_w, 3))
+    black[50:, :, :] = img
     return black
+
 
 def letter_cmp(a, b):
     if a[0] > b[0]:
@@ -168,7 +170,7 @@ for i in data['shapes']:
     # print(i)
     part_name = i['label']
     ##########################REMOVE LATER#############################
-    if part_name == 'Rivet Top 1' or part_name=="Rivet Bottom 1":
+    if part_name == 'Rivet Top 1' or part_name == "Rivet Bottom 1":
         rectangle_size = 0
     ##########################REMOVE LATER#############################
 

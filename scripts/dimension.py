@@ -11,6 +11,7 @@ BASE_PATH = "/python_backend"
 
 # --------------------- MAIN FUNCTION --------------------
 
+
 def detect_circle(img, rmin=15, rmax=30, adp_th=103, canny_th1=0, canny_th2=255, circle_pos=1):
 
     # ------------------------------ PARAMETER CONTROL ------------------------------
@@ -235,7 +236,6 @@ def main():
     #     key = cv2.waitKey(1)
     #     if key == ord("q"):
     #         break
-
 
     # r_s = detect_circle(img,circle_pos = circle_pos,rmin=10,rmax=1500)
     # print(f"r_s:{r_s}")

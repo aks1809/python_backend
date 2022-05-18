@@ -1,12 +1,12 @@
 [
-  {
-    "threshold": 0.41,
-    "step": 8,
-    "erode": 15,
-    "k": 8,
-    "rect_size": 20,
-    "canny_th_1": 30,
-    "canny_th_2": 110,
-    "avg_rad_extra": 2
-  }
-]
+    {
+      "threshold": 0.41,
+      "step": 8,
+      "erode": 15,
+      "k": 8,
+      "rect_size": 20,
+      "canny_th_1": 30,
+      "canny_th_2": 110,
+      "avg_rad_extra": 2
+    }
+  ]
