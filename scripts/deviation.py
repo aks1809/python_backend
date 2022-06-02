@@ -171,6 +171,7 @@ for i in data['shapes']:
     part_name = i['label']
     ##########################REMOVE LATER#############################
     if part_name == 'Rivet Top 1' or part_name == "Rivet Bottom 1":
+        continue
         rectangle_size = 0
     ##########################REMOVE LATER#############################
 
