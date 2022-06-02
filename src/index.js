@@ -11,7 +11,7 @@ import constants from './config/constants';
 const app = express();
 const httpServer = createServer(app);
 
-const BASE_PATH = '/home/poop/frinks/skh/python_backend';
+const BASE_PATH = "/home/user/frinks/python_backend";
 
 middlewaresConfig(app);
 
