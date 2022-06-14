@@ -170,9 +170,9 @@ for i in data['shapes']:
     # print(i)
     part_name = i['label']
     ##########################REMOVE LATER#############################
-    if part_name == 'Rivet Top 1' or part_name == "Rivet Bottom 1":
-        continue
-        rectangle_size = 0
+    # if part_name == 'Rivet Top 1' or part_name == "Rivet Bottom 1":
+    #     continue
+    #     rectangle_size = 0
     ##########################REMOVE LATER#############################
 
     # print(f"part_name: {part_name}")
